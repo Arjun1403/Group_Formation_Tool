@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Course Admin</title>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+
+</head>
+<body>
+<div>
+    <ul id="heading-box">
+        <li style="margin:auto;">
+            <div th:text="${courseId}">
+                Course Admin panel
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul id="heading-box2">
+        <li>
+            <div>
+                Hello, <span th:text="${userId}" />
+            </div>
+        </li>
+        <li>
+            <div class="nav-bar">
+                <form class="nav-bar-element" th:action="@{/logout}" method="post">
+                    <div class="entity">
+                        <button type="submit" class="submit-button" value="Logout" name="Logout">Logout</button>
+                    </div>
+                </form>
+                <form class="nav-bar-element" th:action="@{/course}" method="post">
+                    <div class="entity">
+                        <input  type="hidden" th:value="${true}" name="userRole" />
+                        <input  type="hidden" th:value="${courseId}" name="courseId" />
+                        <input  type="hidden" th:value="${courseName}" name="courseName" />
+                        <button type="submit" class="submit-button" name="save">Course Home</button>
+                    </div>
+                </form>
+                <form class="nav-bar-element" th:action="@{/surveyQuestion}" method="post">
+                    <div class="entity">
+                        <button type="submit" class="submit-button" value="Logout" name="Logout">Survey</button>
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<ul class="functionalities-list">
+    <li class="list">
+        <div class="function-heading">Question Manager</div>
+        <form th:action="@{/questionList}" method="post">
+            <button type="submit" name="save" class="submit-button">Question list</button>
+        </form>
+        <form th:action="@{/addQuestion}" method="post">
+            <button type="submit" name="save" class="submit-button">Add Question</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>
